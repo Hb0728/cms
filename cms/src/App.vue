@@ -6,6 +6,7 @@
 <script>
 import cmsHeader from '@/components/header.vue';
 import meau from "@/components/meau.vue";
+
 export default {
   name: 'app',
   components:{
@@ -37,5 +38,21 @@ img {
 body {
   margin: 0;
   background-color:#F5F5F5;
+}
+a{
+  text-decoration: none;
+}
+a:hover{
+  color:#2975dc;
+}
+/* 当前活跃的路由 */
+a.router-link-exact-active {
+  color: #ffd04b;
+}
+.text-ellipsis {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    display: block;
 }
 </style>

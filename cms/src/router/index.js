@@ -8,48 +8,49 @@ const routes = [
     {
         path: '/',
         redirect: 'index'
-    }, 
+    },
     {
         path: '/index',
         // 已经配置了路径别名，@/view 就可以写成 view
         // 配置了extensions，index.vue可以写成index
         name:'index',
-        component: () => import('views/index/index') 
+        component: () => import('@/views/index/index') 
     },
     {
-        path: '/carton_item',
-        name:'carton_item',
-        component: () => import('views/itemManger/carton_item')
-    },
-    {
-        path: '/product_item',
-        name:'product_item',
-        component: () => import('views/itemManger/product_item')
-    },
-    {
-        path: '/upload_conetnt',
-        name:'upload_conetnt',
-        component: () => import('views/contentManger/upload_conetnt')
+        path: '/upload_content',
+        name:'upload_content',
+        component: () => import('@/views/contentManage/upload_content.vue')
     },
     {
         path: '/text_list',
         name:'text_list',
-        component: () => import('views/textManger/text_list')
+        component: () => import('@/views/textManage/text_list.vue')
+    }, 
+    
+    {
+        path: '/carton_item',
+        name:'carton_item',
+        component: () => import('views/itemManage/carton_item')
+    },
+    {
+        path: '/product_item',
+        name:'product_item',
+        component: () => import('views/itemManage/product_item')
     },
     {
         path: '/voice_list',
         name:'voice_list',
-        component: () => import('views/voiceManger/voice_list')
+        component: () => import('views/voiceManage/voice_list')
     },
     {
         path: '/vedio_list',
         name:'vedio_list',
-        component: () => import('views/vedioManger/vedio_list')
+        component: () => import('views/vedioManage/vedio_list')
     },
     {
         path: '/design_list',
         name:'design_list',
-        component: () => import('views/designManger/design_list')
+        component: () => import('views/designManage/design_list')
     },
     {
         path: '/admin_list',
@@ -86,6 +87,11 @@ const routes = [
         name:'agreementManage',
         component: () => import('views/customerManage/agreementManage')
     },
+    {
+        path: '/outbag_list',
+        name:'outbag_list',
+        component: () => import('views/outbagManage/outbag_list')
+    },
 ]
 
 // 创建路由
@@ -96,4 +102,9 @@ const router = createRouter({
 })
 
 // 导出路由
+router.beforeEach((to,from,next)=>{
+    console.log(to)
+    console.log(from)
+    next()
+})
 export default router
