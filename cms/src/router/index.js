@@ -1,7 +1,8 @@
 // index.js
 
 // 引入需要的模块
-import { createRouter,  createWebHistory } from 'vue-router'
+import { createRouter, createWebHashHistory, createWebHistory } from 'vue-router'
+import store from '@/store/'
 
 // 下面使用了es6的对象增强写法，命名必须是routes
 const routes = [
@@ -94,17 +95,24 @@ const routes = [
     },
 ]
 
+
 // 创建路由
 const router = createRouter({
     // 配置路径
-    history: createWebHistory(),
+    history: createWebHashHistory(),
     routes
 })
-
-// 导出路由
+// 路由拦截(跳转前)
 router.beforeEach((to,from,next)=>{
     console.log(to)
     console.log(from)
+    // 路由
+    store.commit('setLoading',true)
     next()
 })
+// 路由跳转后
+router.afterEach((to, from) => { 
+  store.commit('setLoading',false)  
+})
+// 导出路由
 export default router

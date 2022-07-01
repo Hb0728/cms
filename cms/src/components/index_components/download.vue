@@ -6,31 +6,33 @@
             <el-col :span="7" class="download_title"> 人员 </el-col>
             <el-col :span="7" class="download_title"> 时间 </el-col>
         </el-row>
-        <ul infinite-scroll-disabled="disabled" class="infinite-list" style="overflow: auto; width: 100%">
-            <li v-for="i in download_note" :key="i.id" class="download_list">
-                <el-row align="middle">
-                    <el-col class="d-flex" :span="8">
-                        <i :class="'file_all file_' + i.file_ext"></i>
-                        <div class="text-ellipsis flex-grow-1">
-                            <div class="text-ellipsis text_left">{{ i.title }}</div>
-                            <span class="file_size text_left">{{ i.file_size }}</span>
-                        </div>
-                    </el-col>
-                    <el-col :span="7">
-                        <div class="text-ellipsis">{{ i.name }}</div>
-                    </el-col>
-                    <el-col :span="7">
-                        <div>{{ i.time }}</div>
-                    </el-col>
-                    <el-col :span="1">
-                        <a :href="i.url">
-                            <el-icon>
-                                <MoreFilled />
-                            </el-icon>
-                        </a>
-                    </el-col>
-                </el-row>
-            </li>
+        <ul infinite-scroll-disabled="disabled" class="infinite-list">
+            <el-scrollbar height="330px">
+                <li v-for="i in download_note" :key="i.id" class="download_list">
+                    <el-row align="middle">
+                        <el-col class="d-flex" :span="8">
+                            <i :class="'file_all file_' + i.file_ext"></i>
+                            <div class="text-ellipsis flex-grow-1">
+                                <div class="text-ellipsis text_left">{{ i.title }}</div>
+                                <div class="file_size text_left">{{ i.file_size }}</div>
+                            </div>
+                        </el-col>
+                        <el-col :span="7">
+                            <div class="text-ellipsis">{{ i.name }}</div>
+                        </el-col>
+                        <el-col :span="7">
+                            <div>{{ i.time }}</div>
+                        </el-col>
+                        <el-col :span="1">
+                            <a :href="i.url">
+                                <el-icon>
+                                    <MoreFilled />
+                                </el-icon>
+                            </a>
+                        </el-col>
+                    </el-row>
+                </li>
+            </el-scrollbar>
         </ul>
     </el-col>
 </template>
@@ -206,7 +208,6 @@ export default {
 }
 
 .infinite-list {
-    height: 300px;
     padding: 0;
     margin: 0;
     list-style: none;
@@ -242,6 +243,30 @@ export default {
     background-repeat:no-repeat;
     margin-right:12px;
     flex-shrink: 0;
+}
+.file_doc,.file_docx{
+    background-image: url(@/assets/img/word-ext.svg);
+}
+.file_ppt,.file_pptx{
+    background-image: url(@/assets/img/ppt-ext.svg);
+}
+.file_xml{
+    background-image: url(@/assets/img/ppt-ext.svg);
+}
+.file_png{
+    background-image: url(@/assets/img/png-ext.svg);
+}
+.file_pdf{
+    background-image: url(@/assets/img/pdf-ext.svg);
+}
+.file_rar{
+    background-image: url(@/assets/img/rar-ext.svg);
+}
+.file_zip{
+    background-image: url(@/assets/img/zip-ext.svg);
+}
+.file_txt{
+    background-image: url(@/assets/img/txt-ext.svg);
 }
 .flex-grow-1 {
     -ms-flex-positive: 1!important;

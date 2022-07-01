@@ -1,6 +1,6 @@
 <template>
-    <el-row class="cms_header">
-        <div class="font-weight-bold" style="margin-left:235px">亲宝后台管理系统</div>
+    <el-row class="cms_header" style="margin-left:235px">
+        <div class="font-weight-bold">亲宝后台管理系统</div>
         <div class="login-show">
           <img class="user-pic" src="https://picsum.photos/id/66/30/30" alt="" />
           <span>username</span>

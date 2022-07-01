@@ -1,6 +1,7 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
+import store from './store'
 import ElementPlus from 'element-plus'
 import zhCn from 'element-plus/es/locale/lang/zh-cn'
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
@@ -13,5 +14,6 @@ app.use(ElementPlus, {
     locale: zhCn,size: 'small', zIndex: 3000
 })
 app.use(router)
+app.use(store)
 app.mount('#app');
 
