@@ -1,62 +1,61 @@
 <template>
-    <el-row>
-        <div class="upload_content_view">
-            <el-row class="content-header" justify="space-between" align="middle">
-                <div class="page_name">权限设置</div>
-                <div class="page_address">当前位置：后台首页>权限管理>管理员\角色权限</div>
+    <div class="upload_content_view">
+        <el-row class="content-header" justify="space-between" align="middle">
+            <div class="page_name">权限设置</div>
+            <div class="page_address">当前位置：后台首页>权限管理>管理员\角色权限</div>
+        </el-row>
+        <div class="upload_content">
+            <el-row class="tab huang" style="margin-bottom:24px">
+                <div class="tabbar" @click="choose_first">
+                    管理员列表
+                </div>
+                <div class="tabbar selected">
+                    角色权限
+                </div>
+                <div class="tabbar" @click="choose_third">
+                    外包相关
+                </div>
+                <el-button type="success" size="default" style="position:absolute;right:24px;top: 20px;">添加角色权限
+                </el-button>
             </el-row>
-            <div class="upload_content">
-                <el-row class="tab huang" style="margin-bottom:16px">
-                    <div class="tabbar" @click="choose_first">
-                        管理员列表
-                    </div>
-                    <div class="tabbar selected">
-                        角色权限
-                    </div>
-                    <div class="tabbar" @click="choose_third">
-                        外包相关
-                    </div>
-                    <el-button type="success" size="default"
-                        style="position:absolute;right:20px;top: 20px;">添加角色权限</el-button>
-                </el-row>
-                <div >
-                    <el-table :header-cell-style="{ background: '#E6F1FF', color: '#666' }" :data="tableData"
-                        size="large" style="width: 100%" @selection-change="handleSelectionChange">
-                        <el-table-column align="center" property="id" label="ID" width="120" />
-                        <el-table-column align="center" property="name" label="角色名称" width="120" />
-                        <el-table-column align="center" property="permission" label="角色描述" />
-                        <el-table-column align="center" property="lastlogintime" label="添加时间" />
-                        <el-table-column align="center" property="status" label="状态">
-                            <template #default="scope">
-                                <el-switch v-if="scope.row.dosomething" v-model="scope.row.iswork" width="100" size="large"
-                                    inline-prompt active-text="开" inactive-text="关" />
-                                <div v-if="!scope.row.dosomething">不可操作</div>
-                            </template>
-                        </el-table-column>
-                        <el-table-column align="center" property="" width="250" label="操作">
-                            <el-button size="small" link>编辑</el-button>
-                            <el-button size="small" link>删除</el-button>
-                        </el-table-column>
-                    </el-table>
-                    <div class="demo-pagination-block">
-                        <el-pagination v-model:currentPage="currentPage" v-model:page-size="pageSize" :small="small"
-                            :disabled="disabled" layout="prev, pager, next, jumper" :total="total"
-                            @current-change="handleCurrentChange" />
-                    </div>
-                    <div class style="text-align:start;padding:16px 32px">
+            <div style="padding:0 24px">
+                <el-table :header-cell-style="{ background: '#E6F1FF', color: '#666' }" :data="tableData" size="large"
+                    style="width: 100%" @selection-change="handleSelectionChange">
+                    <el-table-column align="center" property="id" label="ID" width="120" />
+                    <el-table-column align="center" property="name" label="角色名称" width="120" />
+                    <el-table-column align="center" property="permission" label="角色描述" />
+                    <el-table-column align="center" property="lastlogintime" label="添加时间" />
+                    <el-table-column align="center" property="status" label="状态">
+                        <template #default="scope">
+                            <el-switch v-if="scope.row.dosomething" v-model="scope.row.iswork" width="100" size="large"
+                                inline-prompt active-text="开" inactive-text="关" />
+                            <div v-if="!scope.row.dosomething">不可操作</div>
+                        </template>
+                    </el-table-column>
+                    <el-table-column align="center" property="" width="250" label="操作">
+                        <el-button size="small" link>编辑</el-button>
+                        <el-button size="small" link>删除</el-button>
+                    </el-table-column>
+                </el-table>
+                <div class="demo-pagination-block" style="padding:16px">
+                    <el-pagination v-model:currentPage="currentPage" v-model:page-size="pageSize" :background="true"
+                        layout="prev, pager, next, jumper" :total="total" @current-change="handleCurrentChange" />
+                </div>
+                <el-row>
+                    <div class="save_box">
                         <el-button size="default" type="primary">保存</el-button>
                         <el-button size="default">返回</el-button>
                     </div>
-                </div>
+                </el-row>
             </div>
-
         </div>
-    </el-row>
+
+    </div>
 </template>
 
 <script>
 import { ref, reactive } from 'vue';
-import { useRouter} from 'vue-router';
+import { useRouter } from 'vue-router';
 export default {
     name: '',
     setup() {
@@ -271,7 +270,6 @@ export default {
 }
 
 .upload_content_view {
-    width: 100%;
     margin-left: 235px;
     padding: 0 24px;
 }
@@ -339,5 +337,13 @@ export default {
     margin-bottom: 16px;
 }
 
+.save_box {
+    position: absolute;
+    right: 32px;
+}
+
 /* 翻页器样式end */
+.el-table {
+    border: 1px solid #e6e8eb;
+}
 </style>

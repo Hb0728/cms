@@ -1,66 +1,61 @@
 <template>
-    <el-row>
-        <div class="upload_content_view">
-            <el-row class="content-header" justify="space-between" align="middle">
-                <div class="page_name">权限设置</div>
-                <div class="page_address">当前位置：后台首页>权限管理>管理员\角色权限</div>
+    <div class="upload_content_view">
+        <el-row class="content-header" justify="space-between" align="middle">
+            <div class="page_name">权限设置</div>
+            <div class="page_address">当前位置：后台首页>权限管理>管理员\角色权限</div>
+        </el-row>
+        <div class="upload_content">
+            <el-row class="tab huang" style="margin-bottom:24px">
+                <div class="tabbar selected">
+                    管理员列表
+                </div>
+                <div class="tabbar" @click="choose_second">
+                    角色权限
+                </div>
+                <div class="tabbar" @click="choose_third">
+                    外包相关
+                </div>
+                <el-button type="success" size="default" style="position:absolute;right:24px;top: 20px;">添加管理员
+                </el-button>
             </el-row>
-            <div class="upload_content">
-                <el-row class="tab huang" style="margin-bottom:16px">
-                    <div class="tabbar selected">
-                        管理员列表
-                    </div>
-                    <div class="tabbar" @click="choose_second">
-                        角色权限
-                    </div>
-                    <div class="tabbar" @click="choose_third">
-                        外包相关
-                    </div>
-                    <el-button type="success" size="default"
-                        style="position:absolute;right:20px;top: 20px;">添加管理员</el-button>
-                </el-row>
-                <div>
-                    <el-table :header-cell-style="{ background: '#E6F1FF', color: '#666' }" :data="tableData"
-                        size="large" style="width: 100%" @selection-change="handleSelectionChange">
-                        <el-table-column align="center" property="id" label="ID" width="120" />
-                        <el-table-column align="center" property="name" label="账号" width="120" />
-                        <el-table-column align="center" property="phonenum" label="手机" show-overflow-tooltip />
-                        <el-table-column align="center" property="permission" label="权限组" show-overflow-tooltip />
-                        <el-table-column align="center" property="logintimes" label="登录次数" show-overflow-tooltip />
-                        <el-table-column align="center" property="lastip" label="最后登录IP" show-overflow-tooltip />
-                        <el-table-column align="center" property="lastlogintime" label="最后登录时间" show-overflow-tooltip />
-                        <el-table-column align="center" property="status" label="状态" show-overflow-tooltip>
-                            <template #default="scope">
-                                <el-switch v-if="scope.row.dosomething" v-model="scope.row.iswork" width="100"
-                                    size="large" inline-prompt active-text="开" inactive-text="关" />
-                                <div v-if="!scope.row.dosomething">不可操作</div>
-                            </template>
-                        </el-table-column>
-                        <el-table-column align="center" property="" width="300" label="操作" show-overflow-tooltip>
-                            <el-button size="small" link>编辑</el-button>
-                            <el-button size="small" link>资料</el-button>
-                            <el-button size="small" link>日志</el-button>
-                            <el-button size="small" link>重置密码</el-button>
-                            <el-button size="small" link>删除</el-button>
-                        </el-table-column>
-                    </el-table>
-                    <div class="demo-pagination-block">
-                        <el-pagination v-model:currentPage="currentPage" v-model:page-size="pageSize" :small="small"
-                            :disabled="disabled" layout="prev, pager, next, jumper" :total="total"
-                            @current-change="handleCurrentChange" />
-                    </div>
-                    <div class style="text-align:start;padding:16px 32px">
+            <div style="padding:0 24px">
+                <el-table :header-cell-style="{ background: '#E6F1FF', color: '#666' }" :data="tableData" size="large"
+                    style="width: 100%" @selection-change="handleSelectionChange">
+                    <el-table-column align="center" property="id" label="ID" width="120" />
+                    <el-table-column align="center" property="name" label="账号" width="120" />
+                    <el-table-column align="center" property="phonenum" label="手机" show-overflow-tooltip />
+                    <el-table-column align="center" property="permission" label="权限组" show-overflow-tooltip />
+                    <el-table-column align="center" property="logintimes" label="登录次数" show-overflow-tooltip />
+                    <el-table-column align="center" property="lastip" label="最后登录IP" show-overflow-tooltip />
+                    <el-table-column align="center" property="lastlogintime" label="最后登录时间" show-overflow-tooltip />
+                    <el-table-column align="center" property="status" label="状态" show-overflow-tooltip>
+                        <template #default="scope">
+                            <el-switch v-if="scope.row.dosomething" v-model="scope.row.iswork" width="100" size="large"
+                                inline-prompt active-text="开" inactive-text="关" />
+                            <div v-if="!scope.row.dosomething">不可操作</div>
+                        </template>
+                    </el-table-column>
+                    <el-table-column align="center" property="" width="300" label="操作" show-overflow-tooltip>
+                        <el-button size="small" link>编辑</el-button>
+                        <el-button size="small" link>资料</el-button>
+                        <el-button size="small" link>日志</el-button>
+                        <el-button size="small" link>重置密码</el-button>
+                        <el-button size="small" link>删除</el-button>
+                    </el-table-column>
+                </el-table>
+                <div class="demo-pagination-block" style="padding:16px">
+                    <el-pagination v-model:currentPage="currentPage" v-model:page-size="pageSize" :background="true"
+                        layout="prev, pager, next, jumper" :total="total" @current-change="handleCurrentChange" />
+                </div>
+                <el-row>
+                    <div class="save_box">
                         <el-button size="default" type="primary">保存</el-button>
                         <el-button size="default">返回</el-button>
                     </div>
-                </div>
+                </el-row>
             </div>
-
         </div>
-        <div>
-
-        </div>
-    </el-row>
+    </div>
 </template>
 
 <script>
@@ -74,8 +69,8 @@ export default {
         // 定义当前页面路由
         const route = useRoute();
         // 系列列表
-        console.log('这里是router',router)
-        console.log('这里是route',route)
+        console.log('这里是router', router)
+        console.log('这里是route', route)
 
         let succession = reactive([
             {
@@ -285,7 +280,6 @@ export default {
 }
 
 .upload_content_view {
-    width: 100%;
     margin-left: 235px;
     padding: 0 24px;
 }
@@ -353,5 +347,14 @@ export default {
     margin-bottom: 16px;
 }
 
+.save_box {
+    position: absolute;
+    right: 32px;
+}
+
+
 /* 翻页器样式end */
+.el-table {
+    border: 1px solid #e6e8eb;
+}
 </style>

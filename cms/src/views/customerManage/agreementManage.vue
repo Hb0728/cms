@@ -1,33 +1,35 @@
 <template>
-    <el-row style="margin-left:235px">
-        <div class="text_view">
-            <el-row class="content-header" justify="space-between" align="middle">
-                <div class="page_name">客户管理</div>
-                <div class="page_address">当前位置：后台首页>内容管理>已上传内容</div>
+    <div class="text_view" style="margin-left:235px">
+        <el-row class="content-header" justify="space-between" align="middle">
+            <div class="page_name">客户管理</div>
+            <div class="page_address">当前位置：后台首页>内容管理>已上传内容</div>
+        </el-row>
+        <div class="text_list" style="width:100%">
+            <el-row class="tab">
+                <div class="tabbar " @click="content_data.choose_first">
+                    客户列表
+                </div>
+                <div class="tabbar selected">
+                    合同管理
+                </div>
+                <el-button type="success" size="default" style="position:absolute;right:20px;top: 20px;">添加合同
+                </el-button>
             </el-row>
-            <div class="text_list" style="width:100%">
-                <el-row class="tab">
-                    <div class="tabbar "  @click="content_data.choose_first">
-                        客户列表
-                    </div>
-                    <div class="tabbar selected">
-                        合同管理
-                    </div>
-                    <el-button type="success" size="default" style="position:absolute;right:20px;top: 20px;">添加合同
-                    </el-button>
-                </el-row>
-                <el-row style="padding:24px">
-                    <el-input class="search_input m-2" v-model="content_data.searchValue" size="default" placeholder="请输入搜索内容" />
-                    <el-select v-model="content_data.selectSearch" class="m-2" placeholder="Select" size="default">
-                        <el-option v-for="item in content_data.options" :key="item.value" :label="item.label" :value="item.value" />
-                    </el-select>
-                    <el-button type="primary" size="default">
-                        <el-icon>
-                            <Search />
-                        </el-icon>
-                    </el-button>
-                    <el-button type="primary" size="default">清除搜索</el-button>
-                </el-row>
+            <el-row style="padding:24px">
+                <el-input class="search_input m-2" v-model="content_data.searchValue" size="default"
+                    placeholder="请输入搜索内容" />
+                <el-select v-model="content_data.selectSearch" class="m-2" placeholder="Select" size="default">
+                    <el-option v-for="item in content_data.options" :key="item.value" :label="item.label"
+                        :value="item.value" />
+                </el-select>
+                <el-button type="primary" size="default">
+                    <el-icon>
+                        <Search />
+                    </el-icon>
+                </el-button>
+                <el-button type="primary" size="default">清除搜索</el-button>
+            </el-row>
+            <div style="padding:0 24px">
                 <el-table :header-cell-style="{ background: '#E6F1FF', color: '#666' }" :data="content_data.tableData"
                     size="large" style="width: 100%" @selection-change="content_data.handleSelectionChange">
                     <el-table-column align="center" type="selection" />
@@ -44,34 +46,36 @@
                     </el-table-column>
                     <el-table-column align="center" property="name" label="发票情况">
                         <template #default="scope">
-                            <el-switch v-model="scope.row.isopen2" width="100" size="large" style="--el-switch-on-color: #13ce66; --el-switch-off-color: #ff4949" inline-prompt active-text="开"
-                                inactive-text="关" />
+                            <el-switch v-model="scope.row.isopen2" width="100" size="large"
+                                style="--el-switch-on-color: #13ce66; --el-switch-off-color: #ff4949" inline-prompt
+                                active-text="开" inactive-text="关" />
                         </template>
                     </el-table-column>
                     <el-table-column align="center" property="name" label="合同状态">
                         <template #default="scope">
-                            <el-switch v-model="scope.row.isopen" width="100" size="large" style="--el-switch-on-color: #13ce66; --el-switch-off-color: #ff4949" inline-prompt active-text="开"
-                                inactive-text="关" />
+                            <el-switch v-model="scope.row.isopen" width="100" size="large"
+                                style="--el-switch-on-color: #13ce66; --el-switch-off-color: #ff4949" inline-prompt
+                                active-text="开" inactive-text="关" />
                         </template>
                     </el-table-column>
-                    <el-table-column align="center" property="address" label="操作">
+                    <el-table-column align="center" property="address" label="操作" min-width="170">
                         <template #default="scope">
-                            <el-button type="primary" @click="content_data.makeClick">查看</el-button>
-                            <el-button type="danger" @click="content_data.makeClick">删除</el-button>
+                            <el-button type="primary" size="default" @click="content_data.makeClick">查看</el-button>
+                            <el-button type="danger" size="default" @click="content_data.makeClick">删除</el-button>
                         </template>
                     </el-table-column>
                 </el-table>
-                <el-row style="padding:24px" justify="space-between" align="middle">
-                    <el-button type="primary">批量删除</el-button>
-                    <div class="demo-pagination-block">
-                        <el-pagination v-model:currentPage="content_data.currentPage" :page-size="content_data.pageSize"
-                             :background="true" layout="prev, pager, next, jumper"
-                            :total="content_data.total" @current-change="content_data.handleCurrentChange" />
-                    </div>
-                </el-row>
             </div>
+            <el-row style="padding:24px" justify="space-between" align="middle">
+                <el-button type="primary" size="default">批量删除</el-button>
+                <div class="demo-pagination-block">
+                    <el-pagination v-model:currentPage="content_data.currentPage" :page-size="content_data.pageSize"
+                        :background="true" layout="prev, pager, next, jumper" :total="content_data.total"
+                        @current-change="content_data.handleCurrentChange" />
+                </div>
+            </el-row>
         </div>
-    </el-row>
+    </div>
 </template>
 
 <script>
@@ -166,19 +170,19 @@ export default {
             ],
             options: [{
                 label: '腾讯',
-                value:1
+                value: 1
             }, {
                 label: '爱奇艺',
-                value:2
+                value: 2
             }, {
                 label: '芒果',
-                value:3,
-                }],
-            selectSearch:'',
+                value: 3,
+            }],
+            selectSearch: '',
             currentPage: 1,
-            pageSize:20,
-            total:99,
-            handleCurrentChange:function() { 
+            pageSize: 20,
+            total: 99,
+            handleCurrentChange: function () {
                 console.log(111)
             },
             choose_first: function () {
@@ -209,7 +213,6 @@ export default {
 }
 
 .text_view {
-    width: 100%;
     padding: 0 24px;
 }
 
@@ -258,5 +261,9 @@ export default {
 
 .search_input {
     width: auto;
+}
+
+.el-table {
+    border: 1px solid #e6e8eb;
 }
 </style>

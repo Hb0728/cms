@@ -1,5 +1,4 @@
 <template>
-    <el-row>
         <div class="upload_content_view">
             <el-row class="content-header" justify="space-between" align="middle">
                 <div class="page_name">内容管理</div>
@@ -14,11 +13,11 @@
                         素材库
                     </div>
                     <el-button v-show="choose_num == 2" type="warning" size="default"
-                        style="position:absolute;right:20px;top: 20px;">手动上传素材</el-button>
+                        style="position:absolute;right:24px;top: 20px;">手动上传素材</el-button>
                 </el-row>
-                <div v-show="choose_num == 1">
+                <div v-show="choose_num == 1" style="padding:0 24px">
                     <el-row class="select_row" justify="space-between">
-                        <div class="mb-3">
+                        <div>
                             <el-select v-model="successionValue" class="m-2" placeholder="系列" size="default">
                                 <el-option v-for="item in succession" :key="item.value" :label="item.label"
                                     :value="item.value" />
@@ -53,7 +52,7 @@
                             </el-input>
                         </div>
                     </el-row>
-                    <el-table :header-cell-style="{ background: '#E6F1FF',color:'#666'}" :data="tableData" size="large" style="width: 100%"
+                    <el-table :header-cell-style="{ background: '#E6F1FF',color:'#666'}" :data="tableData" size="large" style="width: 100%;"
                         @selection-change="handleSelectionChange">
                         <el-table-column align="center" type="selection" width="55" />
                         <el-table-column align="center" property="id" label="ID" width="120" />
@@ -96,14 +95,14 @@
                         </el-table-column>
                     </el-table>
                     <div class="demo-pagination-block">
-                        <el-pagination v-model:currentPage="currentPage" v-model:page-size="pageSize" :small="small"
+                        <el-pagination :background="true" v-model:currentPage="currentPage" v-model:page-size="pageSize" :small="small"
                             :disabled="disabled" layout="prev, pager, next, jumper" :total="total"
                             @current-change="handleCurrentChange" />
                     </div>
                 </div>
-                <div v-show="choose_num == 2">
+                <div v-show="choose_num == 2" style="padding:0 24px">
                     <el-row class="select_row" justify="space-between">
-                        <div class="mb-3">
+                        <div>
                             <el-select v-model="successionValue" class="m-2" placeholder="系列" size="default">
                                 <el-option v-for="item in succession" :key="item.value" :label="item.label"
                                     :value="item.value" />
@@ -127,7 +126,7 @@
                             </el-select>
                         </div>
                         <div class="mb-3">
-                            <el-button type="primary" style="margin-right:12px">批量下载</el-button>
+                            <el-button type="primary" size="default">批量下载</el-button>
                         </div>
                     </el-row>
                     <el-table :header-cell-style="{ background: '#E6F1FF', color: '#666' }" :data="tableData" size="large" style="width: 100%"
@@ -139,7 +138,7 @@
                         <el-table-column align="center" property="language" label="专辑"  />
                         <el-table-column align="center" property="imgurl" label="缩略图">
                             <template #default="scope">
-                                <div style="display: flex; align-items: center">
+                                <div style="display: flex; align-items: center;justify-content: center;">
                                     <el-image :src="scope.row.imgurl" />
                                     <!-- :preview-src-list="[scope.row.imgurl]"  图片预览层级问题 ？？？  待解决-->
                                 </div>
@@ -158,18 +157,13 @@
                         </el-table-column>
                     </el-table>
                     <div class="demo-pagination-block">
-                        <el-pagination v-model:currentPage="currentPage" v-model:page-size="pageSize" :small="small"
+                        <el-pagination :background="true" v-model:currentPage="currentPage" v-model:page-size="pageSize" :small="small"
                             :disabled="disabled" layout="prev, pager, next, jumper" :total="total"
                             @current-change="handleCurrentChange" />
                     </div>
                 </div>
             </div>
-
         </div>
-        <div>
-
-        </div>
-    </el-row>
 </template>
 
 <script>
@@ -374,7 +368,6 @@ export default {
 }
 
 .upload_content_view {
-    width: 100%;
     margin-left: 235px;
     padding: 0 24px;
 }
@@ -398,7 +391,6 @@ export default {
     border-radius: 10px;
     width: 100%;
     min-height: 720px;
-
 }
 
 .tabbar {
@@ -415,7 +407,7 @@ export default {
 
 .select_row {
     text-align: start;
-    padding: 16px 8px;
+    padding: 16px 0px;
 }
 
 .el-select {
@@ -433,13 +425,22 @@ export default {
 
 /* 翻页器样式 */
 .demo-pagination-block {
-    margin-top: 16px;
+    margin-top: 24px;
     display: flex;
     justify-content: center;
 }
 
 .demo-pagination-block .el-pagination {
-    margin-bottom: 16px;
+    margin-bottom: 24px;
+}
+.m-2{
+    margin-bottom:16px
+}
+.el-select:nth-child(1){
+    padding-left: 0;
+}
+.el-table{
+    border:1px solid #e6e8eb;
 }
 
 /* 翻页器样式end */

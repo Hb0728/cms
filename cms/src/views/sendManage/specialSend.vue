@@ -13,7 +13,7 @@
                     <div class="tabbar" @click="content_data.choose_second">
                         专辑编辑
                     </div>
-                    <el-button type="success" size="default" style="position:absolute;right:20px;top: 20px;">添加产品分类
+                    <el-button type="success" size="default" style="position:absolute;right:24px;top: 20px;">添加产品分类
                     </el-button>
                 </el-row>
                 <el-row class="select_row" justify="space-between">
@@ -26,39 +26,41 @@
                         <el-checkbox v-model="content_data.checked_6" label="西班牙语版" size="large" />
                     </div>
                 </el-row>
-                <el-table :header-cell-style="{ background: '#E6F1FF', color: '#666' }" :data="content_data.tableData"
-                    size="large" style="width: 100%" @selection-change="content_data.handleSelectionChange">
-                    <el-table-column align="center" type="selection" />
-                    <el-table-column align="center" property="num" label="序号" />
-                    <el-table-column align="center" property="title" label="专题名称" />
-                    <el-table-column align="center" property="title" label="专题封面">
-                        <template #default="scope">
-                            <div style="display: flex; align-items: center;justify-contnet:center">
-                                <el-image :src="scope.row.imgurl" />
-                                <!-- :preview-src-list="[scope.row.imgurl]"  图片预览层级问题 ？？？  待解决-->
-                            </div>
-                        </template>
-                    </el-table-column>
-                    <el-table-column align="center" property="title" label="专辑集数" />
-                    <el-table-column align="center" property="name" label="是否独家">
-                        <template #default="scope">
-                            <div style="color:#27d33d">{{ scope.row.name }}</div>
-                        </template>
-                    </el-table-column>
-                    <el-table-column align="center" property="name" label="语言">
-                        <template #default="scope">
-                            <div style="color:#fd7575">{{ scope.row.name }}</div>
-                        </template>
-                    </el-table-column>
-                    <el-table-column align="center" property="title" label="版权" />
-                    <el-table-column align="center" property="name" label="类型" />
+                <div style="padding:0 24px">
+                    <el-table :header-cell-style="{ background: '#E6F1FF', color: '#666' }" :data="content_data.tableData"
+                        size="large" style="width: 100%" @selection-change="content_data.handleSelectionChange">
+                        <el-table-column align="center" type="selection" />
+                        <el-table-column align="center" property="num" label="序号" />
+                        <el-table-column align="center" property="title" label="专题名称" />
+                        <el-table-column align="center" property="title" label="专题封面">
+                            <template #default="scope">
+                                <div style="display: flex; align-items: center;justify-content:center">
+                                    <el-image :src="scope.row.imgurl" />
+                                    <!-- :preview-src-list="[scope.row.imgurl]"  图片预览层级问题 ？？？  待解决-->
+                                </div>
+                            </template>
+                        </el-table-column>
+                        <el-table-column align="center" property="title" label="专辑集数" />
+                        <el-table-column align="center" property="name" label="是否独家">
+                            <template #default="scope">
+                                <div style="color:#27d33d">{{ scope.row.name }}</div>
+                            </template>
+                        </el-table-column>
+                        <el-table-column align="center" property="name" label="语言">
+                            <template #default="scope">
+                                <div style="color:#fd7575">{{ scope.row.name }}</div>
+                            </template>
+                        </el-table-column>
+                        <el-table-column align="center" property="title" label="版权" />
+                        <el-table-column align="center" property="name" label="类型" />
 
-                    <el-table-column align="center" property="address" label="操作">
-                        <template #default="scope">
-                            <el-button type="default" @click="content_data.makeClick">发布管理</el-button>
-                        </template>
-                    </el-table-column>
-                </el-table>
+                        <el-table-column align="center" property="address" label="操作">
+                            <template #default="scope">
+                                <el-button type="default" size="default" @click="content_data.makeClick">发布管理</el-button>
+                            </template>
+                        </el-table-column>
+                    </el-table>
+                </div>
             </div>
         </div>
     </el-row>
@@ -218,12 +220,16 @@ export default {
 }
 
 .select_row {
+
     text-align: start;
-    padding: 16px 8px;
+    padding: 16px 24px;
 }
 
 .el-select {
     padding: 0 8px;
     width: 100px;
+}
+.el-table {
+    border: 1px solid #e6e8eb;
 }
 </style>

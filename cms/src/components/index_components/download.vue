@@ -50,7 +50,7 @@ export default {
                 file_ext: "doc",
                 file_size: "29.00KB",
                 time: "2022-06-15 10:52:06",
-                url: "www.baidu.com",
+                url: "/",
                 name: "张三",
             },
             {
@@ -59,7 +59,7 @@ export default {
                 file_ext: "ppt",
                 file_size: "23.00KB",
                 time: "2022-06-15 10:52:06",
-                url: "www.baidu.com",
+                url: "/",
                 name: "李四",
             },
             {
@@ -68,7 +68,7 @@ export default {
                 file_ext: "",
                 file_size: "23.00KB",
                 time: "2022-06-15 10:52:06",
-                url: "www.baidu.com",
+                url: "/",
                 name: "王五",
             },
             {
@@ -77,7 +77,7 @@ export default {
                 file_ext: "",
                 file_size: "23.00KB",
                 time: "2022-06-15 10:52:06",
-                url: "www.baidu.com",
+                url: "/",
                 name: "王五",
             },
             {
@@ -86,7 +86,7 @@ export default {
                 file_ext: "",
                 file_size: "23.00KB",
                 time: "2022-06-15 10:52:06",
-                url: "www.baidu.com",
+                url: "/",
                 name: "王五",
             },
             {
@@ -95,7 +95,7 @@ export default {
                 file_ext: "",
                 file_size: "23.00KB",
                 time: "2022-06-15 10:52:06",
-                url: "www.baidu.com",
+                url: "/",
                 name: "王五",
             },
             {
@@ -104,7 +104,7 @@ export default {
                 file_ext: "",
                 file_size: "23.00KB",
                 time: "2022-06-15 10:52:06",
-                url: "www.baidu.com",
+                url: "/",
                 name: "王五",
             },
             {
@@ -113,7 +113,7 @@ export default {
                 file_ext: "",
                 file_size: "23.00KB",
                 time: "2022-06-15 10:52:06",
-                url: "www.baidu.com",
+                url: "/",
                 name: "王五",
             },
             {
@@ -122,7 +122,7 @@ export default {
                 file_ext: "",
                 file_size: "23.00KB",
                 time: "2022-06-15 10:52:06",
-                url: "www.baidu.com",
+                url: "/",
                 name: "王五",
             },
             {
@@ -131,7 +131,7 @@ export default {
                 file_ext: "",
                 file_size: "23.00KB",
                 time: "2022-06-15 10:52:06",
-                url: "www.baidu.com",
+                url: "/",
                 name: "王五",
             },
             {
@@ -140,7 +140,7 @@ export default {
                 file_ext: "",
                 file_size: "23.00KB",
                 time: "2022-06-15 10:52:06",
-                url: "www.baidu.com",
+                url: "/",
                 name: "王五",
             },
             {
@@ -149,7 +149,7 @@ export default {
                 file_ext: "",
                 file_size: "23.00KB",
                 time: "2022-06-15 10:52:06",
-                url: "www.baidu.com",
+                url: "/",
                 name: "王五",
             },
             {
@@ -158,7 +158,7 @@ export default {
                 file_ext: "",
                 file_size: "23.00KB",
                 time: "2022-06-15 10:52:06",
-                url: "www.baidu.com",
+                url: "/",
                 name: "王五",
             },
             {
@@ -167,7 +167,7 @@ export default {
                 file_ext: "",
                 file_size: "23.00KB",
                 time: "2022-06-15 10:52:06",
-                url: "www.baidu.com",
+                url: "/",
                 name: "王五",
             },
             {
@@ -176,7 +176,7 @@ export default {
                 file_ext: "",
                 file_size: "23.00KB",
                 time: "2022-06-15 10:52:06",
-                url: "www.baidu.com",
+                url: "/",
                 name: "王五",
             },
         ]);

@@ -1,22 +1,23 @@
 <template>
-    <el-row style="margin-left:235px">
-        <div class="text_view">
-            <el-row class="content-header" justify="space-between" align="middle">
-                <div class="page_name">视频管理</div>
-                <div class="page_address">当前位置：后台首页>内容管理>已上传内容</div>
-            </el-row>
-            <div class="text_list" style="width:100%">
-                <el-row class="tab">
-                    <div class="tabbar selected" @click="choose_first">
-                        项目列表
-                    </div>
+    <div class="text_view" style="margin-left:235px">
+        <el-row class="content-header" justify="space-between" align="middle">
+            <div class="page_name">视频管理</div>
+            <div class="page_address">当前位置：后台首页>内容管理>已上传内容</div>
+        </el-row>
+        <div class="text_list" style="width:100%">
+            <el-row class="tab">
+                <div class="tabbar selected" @click="choose_first">
+                    项目列表
+                </div>
 
-                    <el-button type="success" size="default" style="position:absolute;right:20px;top: 20px;">添加视频项目
-                    </el-button>
-                </el-row>
+                <el-button type="success" size="default" style="position:absolute;right:24px;top: 20px;">添加视频项目
+                </el-button>
+            </el-row>
+            <div style="padding:0 24px">
                 <el-row class="select_row" justify="space-between">
                     <div class="mb-3">
-                        <el-select v-model="content_data.successionValue" class="m-2" placeholder="视频负责人" size="default">
+                        <el-select v-model="content_data.successionValue" class="m-2" placeholder="视频负责人"
+                            size="default">
                             <el-option v-for="item in content_data.succession" :key="item.value" :label="item.label"
                                 :value="item.value" />
                         </el-select>
@@ -42,41 +43,47 @@
                         </el-input>
                     </div>
                 </el-row>
-                <el-table :header-cell-style="{ background: '#E6F1FF',color:'#666'}" :data="content_data.tableData" size="large" style="width: 100%"
-                    @selection-change="content_data.handleSelectionChange">
+                <el-table :header-cell-style="{ background: '#E6F1FF', color: '#666' }" :data="content_data.tableData"
+                    size="large" style="width: 100%" @selection-change="content_data.handleSelectionChange">
                     <el-table-column align="center" type="selection" />
-                    <el-table-column align="center" property="num" label="序号"  />
-                    <el-table-column align="center" property="title" label="项目标题"  />
-                    <el-table-column align="center" property="title" label="音频负责人"  />
-                    <el-table-column align="center" property="title" label="剧本关联"  />
+                    <el-table-column align="center" property="num" label="序号" />
+                    <el-table-column align="center" property="title" label="项目标题" />
+                    <el-table-column align="center" property="title" label="音频负责人" />
+                    <el-table-column align="center" property="title" label="剧本关联" />
                     <el-table-column align="center" property="name" label="已上传音频数">
                         <template #default="scope">
-                            <div style="color:#27d33d">{{scope.row.name}}</div>
+                            <div style="color:#27d33d">{{ scope.row.name }}</div>
                         </template>
                     </el-table-column>
-                    <el-table-column align="center" property="name" label="审核通过"  >
+                    <el-table-column align="center" property="name" label="审核通过">
                         <template #default="scope">
-                            <div style="color:#fd7575">{{scope.row.name}}</div>
+                            <div style="color:#fd7575">{{ scope.row.name }}</div>
                         </template>
                     </el-table-column>
                     <el-table-column align="center" property="title" label="状态" />
                     <el-table-column align="center" property="name" label="附件/备注">
                         <template #default="scope">
-                            <div style="margin-bottom:8px"><el-button type="primary">附件</el-button></div>
-                            <div><el-button type="primary">备注</el-button></div>
+                            <div style="margin-bottom:8px">
+                                <el-button type="primary">附件</el-button>
+                            </div>
+                            <div>
+                                <el-button type="primary">备注</el-button>
+                            </div>
                         </template>
                     </el-table-column>
                     <el-table-column align="center" property="address" label="操作">
                         <template #default="scope">
-                            <el-button v-if="scope.row.type===1" type="info"  @click="content_data.makeClick">制作中</el-button>
-                            <el-button v-if="scope.row.type===2"  type="warning"  @click="content_data.watchClick">审核</el-button>
-                            <el-button v-if="scope.row.type===3"  type="danger" >入库</el-button>
+                            <el-button v-if="scope.row.type === 1" size="default" type="info"
+                                @click="content_data.makeClick">制作中</el-button>
+                            <el-button v-if="scope.row.type === 2" size="default" type="warning"
+                                @click="content_data.watchClick">审核</el-button>
+                            <el-button v-if="scope.row.type === 3" size="default" type="danger">入库</el-button>
                         </template>
                     </el-table-column>
                 </el-table>
             </div>
         </div>
-    </el-row>
+    </div>
 </template>
 
 <script>
@@ -96,7 +103,7 @@ export default {
                     value: '王五'
                 }
             ],
-            makerValue:[
+            makerValue: [
                 {
                     value: '张三'
                 },
@@ -116,7 +123,7 @@ export default {
                     address: 'No. 189, Grove St, Los Angeles',
                     zip: 'CA 90036',
                     tag: 'Home',
-                    type:1,
+                    type: 1,
                 },
                 {
                     date: '2016-05-02',
@@ -126,7 +133,7 @@ export default {
                     address: 'No. 189, Grove St, Los Angeles',
                     zip: 'CA 90036',
                     tag: 'Office',
-                    type:2,
+                    type: 2,
                 },
                 {
                     date: '2016-05-04',
@@ -136,7 +143,7 @@ export default {
                     address: 'No. 189, Grove St, Los Angeles',
                     zip: 'CA 90036',
                     tag: 'Home',
-                    type:3,
+                    type: 3,
                 },
                 {
                     date: '2016-05-01',
@@ -146,7 +153,7 @@ export default {
                     address: 'No. 189, Grove St, Los Angeles',
                     zip: 'CA 90036',
                     tag: 'Office',
-                    type:1,
+                    type: 1,
                 },
             ],
             successionValue: '',
@@ -157,10 +164,10 @@ export default {
             handleSelectionChange: function () {
                 console.log('我调用了')
             },
-            watchClick: function () { 
+            watchClick: function () {
                 console.log('审核');
             },
-            makeClick: function () { 
+            makeClick: function () {
                 console.log('入库');
             }
         })
@@ -179,7 +186,6 @@ export default {
 }
 
 .text_view {
-    width: 100%;
     padding: 0 24px;
 }
 
@@ -218,11 +224,18 @@ export default {
 
 .select_row {
     text-align: start;
-    padding: 16px 8px;
+    padding: 16px 0px;
 }
 
 .el-select {
     padding: 0 8px;
     width: 100px;
+}
+.el-select:nth-child(1){
+    padding-left: 0;
+}
+
+.el-table {
+    border: 1px solid #e6e8eb;
 }
 </style>

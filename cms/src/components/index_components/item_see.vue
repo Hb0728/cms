@@ -96,7 +96,6 @@ export default {
 	margin-bottom: 20px;
 	max-width: 29%;
 	flex: 0 0 29%;
-	max-height: 456px;
 }
 
 .time{

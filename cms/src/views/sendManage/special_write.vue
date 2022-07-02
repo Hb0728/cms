@@ -7,37 +7,39 @@
             </el-row>
             <div class="text_list" style="width:100%">
                 <el-row class="tab">
-                    <div class="tabbar ">
+                    <div class="tabbar " @click="content_data.choose_first">
                         专辑发布
                     </div>
-                    <div class="tabbar selected" @click="content_data.choose_second">
+                    <div class="tabbar selected">
                         专辑编辑
                     </div>
-                    <el-button type="success" size="default" style="position:absolute;right:20px;top: 20px;">新建专辑
+                    <el-button type="success" size="default" style="position:absolute;right:24px;top: 20px;">新建专辑
                     </el-button>
                 </el-row>
-                <el-table :header-cell-style="{ background: '#E6F1FF', color: '#666' }" :data="content_data.tableData"
-                    size="large" style="width: 100%" @selection-change="content_data.handleSelectionChange">
-                    <el-table-column align="center" type="selection" />
-                    <el-table-column align="center" property="num" label="序号" />
-                    <el-table-column align="center" property="title" label="专题名称" />
-                    <el-table-column align="center" property="title" label="专题封面">
-                        <template #default="scope">
-                            <div style="display: flex; align-items: center;justify-contnet:center">
-                                <el-image :src="scope.row.imgurl" />
-                                <!-- :preview-src-list="[scope.row.imgurl]"  图片预览层级问题 ？？？  待解决-->
-                            </div>
-                        </template>
-                    </el-table-column>
-                    <el-table-column align="center" property="title" label="专题系列" />
-                    <el-table-column align="center" property="title" label="专辑集数" />
-                    <el-table-column align="center" property="name" label="语言"/>
-                    <el-table-column align="center" property="address" label="操作">
-                        <template #default="scope">
-                            <el-button type="default" @click="content_data.makeClick">查看专题</el-button>
-                        </template>
-                    </el-table-column>
-                </el-table>
+                <div style="padding:0 24px">
+                    <el-table :header-cell-style="{ background: '#E6F1FF', color: '#666' }" :data="content_data.tableData"
+                        size="large" style="width: 100%" @selection-change="content_data.handleSelectionChange">
+                        <el-table-column align="center" type="selection" />
+                        <el-table-column align="center" property="num" label="序号" />
+                        <el-table-column align="center" property="title" label="专题名称" />
+                        <el-table-column align="center" property="title" label="专题封面">
+                            <template #default="scope">
+                                <div style="display: flex; align-items: center;justify-content:center">
+                                    <el-image :src="scope.row.imgurl" />
+                                    <!-- :preview-src-list="[scope.row.imgurl]"  图片预览层级问题 ？？？  待解决-->
+                                </div>
+                            </template>
+                        </el-table-column>
+                        <el-table-column align="center" property="title" label="专题系列" />
+                        <el-table-column align="center" property="title" label="专辑集数" />
+                        <el-table-column align="center" property="name" label="语言"/>
+                        <el-table-column align="center" property="address" label="操作">
+                            <template #default="scope">
+                                <el-button type="default" size="default" @click="content_data.makeClick">查看专题</el-button>
+                            </template>
+                        </el-table-column>
+                    </el-table>
+                </div>
             </div>
         </div>
     </el-row>
@@ -131,8 +133,8 @@ export default {
             watchValue: '',
             contentValue: '',
             searchValue: '',
-            choose_second: function () {
-                router.push('/special_write')
+            choose_first: function () {
+                router.push('/specialSend')
             },
             handleSelectionChange: function () {
                 console.log('我调用了')
@@ -183,7 +185,9 @@ export default {
     width: 100%;
     min-height: 600px;
 }
-
+.tab{
+    margin-bottom:24px
+}
 .tabbar {
     padding: 16px 0px;
     margin: 0 24px;
@@ -204,5 +208,8 @@ export default {
 .el-select {
     padding: 0 8px;
     width: 100px;
+}
+.el-table {
+    border: 1px solid #e6e8eb;
 }
 </style>
