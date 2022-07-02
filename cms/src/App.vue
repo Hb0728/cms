@@ -1,5 +1,5 @@
 <template>
-	<div style="min-height:1080px" v-loading="isLoading">
+	<div style="min-height:720px" v-loading="isLoading">
 		<cms-header></cms-header>
 		<meau></meau>
 		<router-view />

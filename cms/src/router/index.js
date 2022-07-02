@@ -93,6 +93,11 @@ const routes = [
         name:'outbag_list',
         component: () => import('views/outbagManage/outbag_list')
     },
+    {
+        path: '/download',
+        name:'outbag_list',
+        component: () => import('views/second_page/download')
+    },
 ]
 
 
